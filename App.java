@@ -9,13 +9,14 @@ public class App {
     public static String[] leituraArquivo(){
         
         try {
-            FileReader fileReader = new FileReader("alunosED.txt");
+            FileReader fileReader = new FileReader("palavras.txt");
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             ArrayList<String> nomes = new ArrayList<String>();
             String linha;
             while ((linha = bufferedReader.readLine()) != null) {
                 nomes.add(linha);
             }
+            System.out.println(nomes.size());
             String[] vetorDeNomes = nomes.toArray(new String[0]);
             bufferedReader.close();
             return vetorDeNomes;
@@ -24,16 +25,55 @@ public class App {
             return null;
         }
     }
+    private static void InserirVector(String[] nomes) {
+        long inicio = System.currentTimeMillis();
+        Vector<Elemento> vector = new Vector<Elemento>();
+        for (int i = 0; i < nomes.length; i++) {
+            Elemento e = new Elemento(nomes[i], i);
+            vector.add(e);
+        }
+        long fim = System.currentTimeMillis();
+        long tempoDeExecucao = fim - inicio;
+        System.out.println(tempoDeExecucao);
+    
+    }
+    private static void InserirArrayList(String[] nomes) {
+        long inicio = System.currentTimeMillis();
+        ArrayList<Elemento> array = new ArrayList<Elemento>();
+        for (int i = 0; i < nomes.length; i++) {
+            Elemento e = new Elemento(nomes[i], i);
+            array.add(e);
+        }
+        long fim = System.currentTimeMillis();
+        long tempoDeExecucao = fim - inicio;
+        System.out.println(tempoDeExecucao);
+    
+    }
+    private static void InserirLinkedList(String[] nomes) {
+        long inicio = System.currentTimeMillis();
+        LinkedList<Elemento> lista= new LinkedList<Elemento>();
+        for (int i = 0; i < nomes.length; i++) {
+            Elemento e = new Elemento(nomes[i], i);
+            lista.add(e);
+        }
+        long fim = System.currentTimeMillis();
+        long tempoDeExecucao = fim - inicio;
+        System.out.println(tempoDeExecucao);
+    
+    }
+    
     public static void main(String[] args) {
         //long inicio = System.currentTimeMillis();
         //long fim = System.currentTimeMillis();
         //long tempoDeExecucao = fim - inicio;
-        Elemento e = new Elemento("Luis", 1);
-        Vector<Elemento> lista = new Vector<Elemento>();
-        lista.add(e);
-        for (Elemento e1 : lista) {
-            System.out.println(e1.nome); 
-        }
-        
+        String[] nomes = leituraArquivo();
+        //InserirVector(nomes);
+        //InserirArrayList(nomes);
+        InserirLinkedList(nomes);
 }
+    
 }
+
+    
+
+    
