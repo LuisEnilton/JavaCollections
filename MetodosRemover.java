@@ -9,10 +9,9 @@ public class MetodosRemover {
         "Konkuk", "Sogang", "momentarily", "rubella", "vaccinations", 
         "government", "Authorities"};
 
-
     public static void escreverEstatisticas(Long tempo) {
         try (FileWriter writer = new FileWriter("tempo.txt",true)) {
-                writer.write(tempo + " ");
+            writer.write(tempo + " ");
             writer.close();
         }
         catch(IOException e) {
@@ -30,6 +29,7 @@ public class MetodosRemover {
         System.out.println(tempoDeExecucao);
         escreverEstatisticas(tempoDeExecucao);
     }
+    
     public static void remover(Set<String> set) {
         long inicio = System.nanoTime();
         for (String s : nomesRemover) {
